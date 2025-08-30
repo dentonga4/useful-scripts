@@ -26,7 +26,7 @@ python export_s3_config.py
 
 **Output:**
 ```
-{account-id}/
+/tmp/{account-id}/
 ├── bucket1.json
 ├── bucket2.json
 └── bucket3.json
