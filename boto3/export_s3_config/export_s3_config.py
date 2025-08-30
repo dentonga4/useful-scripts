@@ -15,7 +15,7 @@ def main():
     account_id = sts.get_caller_identity()["Account"]
 
     # Create directory for account
-    output_dir = f"{account_id}"
+    output_dir = f"/tmp/{account_id}"
     os.makedirs(output_dir, exist_ok=True)
 
     # Get all S3 buckets
