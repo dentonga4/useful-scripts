@@ -1,0 +1,21 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenySageMakerModelWithoutVPCOrNetworkIsolation",
+      "Effect": "Deny",
+      "Action": [
+        "sagemaker:CreateModel"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Bool": {
+          "sagemaker:NetworkIsolation": "false"
+        },
+        "Null": {
+          "sagemaker:VpcSubnets": "true"
+        }
+      }
+    }
+  ]
+}
