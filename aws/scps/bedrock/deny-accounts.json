@@ -1,0 +1,22 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyBedrockExceptAllowedAccounts",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEquals": {
+          "aws:PrincipalAccount": [
+            "123456789012",
+            "234567890123",
+            "345678901234"
+          ]
+        }
+      }
+    }
+  ]
+}
