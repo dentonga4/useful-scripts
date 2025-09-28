@@ -1,0 +1,23 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyBedrockModelsExceptAllowed",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "bedrock:ModelId": [
+            "anthropic.claude-3-sonnet-*",
+            "anthropic.claude-3-haiku-*",
+            "amazon.titan-text-lite-*"
+          ]
+        }
+      }
+    }
+  ]
+}

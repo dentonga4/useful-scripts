@@ -1,0 +1,36 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyBedrockWithoutGuardrail",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "bedrock:GuardrailId": "true"
+        }
+      }
+    },
+    {
+      "Sid": "RequireSpecificGuardrail",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEquals": {
+          "bedrock:GuardrailId": [
+            "guardrail-12345678",
+            "guardrail-87654321"
+          ]
+        }
+      }
+    }
+  ]
+}
