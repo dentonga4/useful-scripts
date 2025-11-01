@@ -1,0 +1,18 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Condition": {
+        "Null": {
+          "aws:SourceVpce": "true"
+        }
+      },
+      "Effect": "Deny",
+      "Resource": "*",
+      "Sid": "DenyBedrockWithoutVPCEndpoint"
+    }
+  ]
+}
